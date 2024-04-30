@@ -9,14 +9,14 @@ class Program {
         Console.WriteLine("Lab 1, made by Oleksiienko Pavlo");
         Console.WriteLine("Threads are calculating the arithmetical progression with a given delta.");
         int threadsCount = ExtractFromSTDIN("number of threads");
-        int sleepMs = ExtractFromSTDIN("wait time in milliseconds");
+        int sleepS = ExtractFromSTDIN("wait time in seconds");
         int progressionDelta = ExtractFromSTDIN("integer progression delta");
 
         List<WatchDogAwareThread> threads = new List<WatchDogAwareThread>();
         for (int i = 1; i <= threadsCount; i++) {
             threads.Add(new CalculatorThread(progressionDelta, "Calculator " + i));
         }
-        WatchDog watchDog = new WatchDog(sleepMs, threads);
+        WatchDog watchDog = new WatchDog(sleepS, threads);
         Console.WriteLine("Starting runners");
         new Thread(new ThreadStart(watchDog.Run)).Start();
     }

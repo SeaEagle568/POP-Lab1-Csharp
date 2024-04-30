@@ -10,7 +10,7 @@ public class WatchDog {
     public void Run() {
         StartThreads();
         try {
-            Thread.Sleep(sleepTime);
+            Thread.Sleep(sleepTime * 1000);
             TerminateThreads();
         } catch (ThreadInterruptedException) {
             Console.Error.WriteLine("Watchdog: Application was interrupted! Stopping all threads...");

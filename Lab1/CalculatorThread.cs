@@ -9,9 +9,11 @@ public class CalculatorThread : WatchDogAwareThread {
 
     public override void Run() {
         long sum = 0;
+        long progress = 0;
         while (IsRunning()) {
             sum += delta;
+            progress++;
         }
-        Console.WriteLine($"{name} finished with result: {sum}");
+        Console.WriteLine($"{name} finished with result: {sum}, {progress} steps");
     }
 }
